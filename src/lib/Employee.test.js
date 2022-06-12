@@ -27,11 +27,4 @@ describe("Employee", () => {
 
     expect(actual).toEqual(expected);
   });
-
-  it("should return 'Employee' when getRole is called", () => {
-    const expected = "Employee";
-    const actual = employeeTest.getRole();
-
-    expect(actual).toEqual(expected);
-  });
 });
