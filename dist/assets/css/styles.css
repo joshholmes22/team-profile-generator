@@ -1,0 +1,42 @@
+:root {
+    --blue: #121c3f;
+}
+
+html {
+    font-size: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+/* header */
+.header {
+    background-color: var(--blue);
+}
+
+.page-title {
+    padding: 2rem;
+    text-align: center;
+    font-size: 5rem;
+    color: #fff;
+}
+
+.accordion-text {
+    font-size: 1.5rem;
+}
+
+.accordion {
+    width: 60%;
+    margin: auto;
+}
+
+.main {
+    justify-content: center;
+}
