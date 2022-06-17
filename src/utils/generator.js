@@ -1,6 +1,30 @@
-const generateManagerCard = (engineers) => {};
+const generateManagerCard = (manager) => {
+  return `          <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Manager</h5>
+      <p class="card-text"><strong>Name: </strong>${manager.getName()}</p>
+      <p class="card-text"><strong>ID: </strong>${manager.getId()}</p>
+      <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></p>
+    </div>
+  </div>`;
+};
 
-const generateEngineerCard = (engineers) => {};
+const generateEngineerCard = (engineers) => {
+  engineers.shift();
+  return engineers
+    .map((engineer) => {
+      return `          <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Engineer</h5>
+        <p class="card-text"><strong>Name: </strong>${engineer.getName()}</p>
+        <p class="card-text"><strong>ID: </strong>${engineer.getId()}</p>
+        <p class="card-text"><strong>Email: </strong><a class="link" href="mailtoe:${engineer.getEmail()}">${engineer.getEmail()}</a></p>
+        <p class="card-text"><strong>Github: </strong><a class="link" href="https://www.github.com/${engineer.getLink()}" target="_blank">${engineer.getLink()}</a></p>
+      </div>
+    </div>`;
+    })
+    .join("");
+};
 
 const generateInternCard = (interns) => {
   return interns
@@ -8,10 +32,10 @@ const generateInternCard = (interns) => {
       return `            <div class="card">
       <div class="card-body">
         <h5 class="card-title">Intern</h5>
-        <p class="card-text"><strong>Name: </strong>${intern.name}</p>
-        <p class="card-text"><strong>ID: </strong>${intern.id}</p>
-        <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:bob@email.com">${intern.email}</a></p>
-        <p class="card-text"><strong>School: </strong>${intern.school}</p>
+        <p class="card-text"><strong>Name: </strong>${intern.getName()}</p>
+        <p class="card-text"><strong>ID: </strong>${intern.getId()}</p>
+        <p class="card-text"><strong>Email: </strong><a class="link" href="${intern.getEmail()}">${intern.getEmail()}</a></p>
+        <p class="card-text"><strong>School: </strong>${intern.getSchool()}</p>
       </div>
     </div>`;
     })
@@ -19,13 +43,14 @@ const generateInternCard = (interns) => {
 };
 
 const generateHTML = (engineers, interns) => {
+  const manager = engineers[0];
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>TEAM NAME Members</title>
+      <title>${manager.getTeamName()} Members</title>
       <!-- bootstrap stylesheet -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
       <!-- google fonts styles -->
@@ -42,9 +67,9 @@ const generateHTML = (engineers, interns) => {
       
       <header class="header">
           <h1 class="page-title">
-              Your Team Profile
+              ${manager.getTeamName()} Profile
           </h1>
-          <h2 class="page-description">Office Number: </h2>
+          <h2 class="page-description">Office Number: ${manager.getOfficeNumber()}</h2>
       </header>
   
       <main class="main">
@@ -56,7 +81,9 @@ const generateHTML = (engineers, interns) => {
                   </button>
                 </h2>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                  <div class="accordion-body">${generateManagerCard(
+                    manager
+                  )}</div>
                 </div>
               </div>
               <div class="accordion-item">
@@ -66,7 +93,9 @@ const generateHTML = (engineers, interns) => {
                   </button>
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                  <div class="accordion-body">${generateEngineerCard(
+                    engineers
+                  )}</div>
                 </div>
               </div>
               <div class="accordion-item">
@@ -80,39 +109,6 @@ const generateHTML = (engineers, interns) => {
                     ${generateInternCard(interns)}
                   </div>
                 </div>
-              </div>
-            </div>
-  
-            <!-- Manager Card -->
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Manager</h5>
-                <p class="card-text"><strong>Name: </strong>Steve</p>
-                <p class="card-text"><strong>ID: </strong>1234</p>
-                <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:bob@email.com">Steve@email.com</a></p>
-              </div>
-            </div>
-  
-  
-            <!-- Engineer Card -->
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Engineer</h5>
-                <p class="card-text"><strong>Name: </strong>Dave</p>
-                <p class="card-text"><strong>ID: </strong>9876</p>
-                <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:bob@email.com">Dave@email.com</a></p>
-                <p class="card-text"><strong>Github: </strong><a class="link" href="https://www.github.com" target="_blank">DaveGit</a></p>
-              </div>
-            </div>
-  
-            <!-- Intern Card -->
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Intern</h5>
-                <p class="card-text"><strong>Name: </strong>Bob</p>
-                <p class="card-text"><strong>ID: </strong>25436</p>
-                <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:bob@email.com">Bob@email.com</a></p>
-                <p class="card-text"><strong>School: </strong>Birmingham University</p>
               </div>
             </div>
       </main>

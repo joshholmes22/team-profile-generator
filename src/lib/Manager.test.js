@@ -5,6 +5,7 @@ const managerTest = new Manager({
   id: "2",
   email: "dave@email.com",
   officeNumber: "10",
+  teamName: "Company ABC",
 });
 
 describe("Manager", () => {
@@ -39,6 +40,13 @@ describe("Manager", () => {
   it("should return '10' when getOfficeNumber is called", () => {
     const expected = "10";
     const actual = managerTest.getOfficeNumber();
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("should return 'Company ABC' when getTeamName is called", () => {
+    const expected = "Company ABC";
+    const actual = managerTest.getTeamName();
 
     expect(actual).toEqual(expected);
   });

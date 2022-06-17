@@ -53,6 +53,7 @@ const setManager = (managerInfo) => {
     id: managerInfo.managerId,
     email: managerInfo.managerEmail,
     officeNumber: managerInfo.officeNumber,
+    teamName: managerInfo.teamName,
   });
 
   engineers.push(manager);
