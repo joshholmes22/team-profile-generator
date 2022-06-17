@@ -112,13 +112,19 @@ const init = async () => {
       engineers.push(engineer);
       continueChoice = await inquirer.prompt(continueQuestion);
     } else if (continueChoice.continueOption == "Add a new intern") {
+      const internAnswers = await inquirer.prompt(internQuestions);
+      const intern = new Intern({
+        name: internAnswers.name,
+        id: internAnswers.id,
+        email: internAnswers.email,
+        school: internAnswers.school,
+      });
+      interns.push(intern);
       continueChoice = await inquirer.prompt(continueQuestion);
     } else {
       inProgress = false;
     }
   }
-
-  console.log(engineers[0].getRole());
 
   const manager = new Manager({
     name: managerInfo.managerName,
