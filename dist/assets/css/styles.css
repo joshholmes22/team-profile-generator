@@ -28,8 +28,15 @@ body {
     color: #fff;
 }
 
+.page-description {
+    padding-bottom: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+}
+
 .accordion-text {
-    font-size: 1.5rem;
+    font-size: 3rem;
 }
 
 .accordion {
@@ -39,4 +46,22 @@ body {
 
 .main {
     justify-content: center;
+}
+
+.card {
+    width: 30rem;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 2rem;
+}
+
+
+.card-text {
+    font-size: 1.5rem;
+}
+
+.link {
+    text-decoration: none;
 }
