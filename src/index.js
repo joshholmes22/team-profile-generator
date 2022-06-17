@@ -1,8 +1,12 @@
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 const init = async () => {
   let inProgress = true;
+  const engineers = [];
+  const interns = [];
 
   const managerQuestions = [
     {
@@ -45,6 +49,52 @@ const init = async () => {
     },
   ];
 
+  const engineerQuestions = [
+    {
+      type: "input",
+      message: "Please enter the Engineer's name",
+      name: "name",
+    },
+    {
+      type: "input",
+      message: "Please enter the Engineer's ID",
+      name: "id",
+    },
+    {
+      type: "input",
+      message: "Please enter the Engineer's email address",
+      name: "email",
+    },
+    {
+      type: "input",
+      message: "Please enter the Engineer's GitHub username",
+      name: "github",
+    },
+  ];
+
+  const internQuestions = [
+    {
+      type: "input",
+      message: "Please enter the Intern's name",
+      name: "name",
+    },
+    {
+      type: "input",
+      message: "Please enter the Intern's ID",
+      name: "id",
+    },
+    {
+      type: "input",
+      message: "Please enter the Intern's email address",
+      name: "email",
+    },
+    {
+      type: "input",
+      message: "Please enter the Intern's school",
+      name: "school",
+    },
+  ];
+
   const managerInfo = await inquirer.prompt(managerQuestions);
 
   let continueChoice = await inquirer.prompt(continueQuestion);
@@ -52,6 +102,14 @@ const init = async () => {
   while (inProgress) {
     console.log(continueChoice);
     if (continueChoice.continueOption == "Add a new engineer") {
+      const engineerAnswers = await inquirer.prompt(engineerQuestions);
+      const engineer = new Engineer({
+        name: engineerAnswers.name,
+        id: engineerAnswers.id,
+        email: engineerAnswers.email,
+        link: engineerAnswers.github,
+      });
+      engineers.push(engineer);
       continueChoice = await inquirer.prompt(continueQuestion);
     } else if (continueChoice.continueOption == "Add a new intern") {
       continueChoice = await inquirer.prompt(continueQuestion);
@@ -59,6 +117,8 @@ const init = async () => {
       inProgress = false;
     }
   }
+
+  console.log(engineers[0].getRole());
 
   const manager = new Manager({
     name: managerInfo.managerName,
