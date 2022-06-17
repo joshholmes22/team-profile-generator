@@ -2,6 +2,8 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 
 const init = async () => {
+  let inProgress = true;
+
   const managerQuestions = [
     {
       type: "input",
@@ -30,7 +32,33 @@ const init = async () => {
     },
   ];
 
+  const continueQuestion = [
+    {
+      type: "list",
+      message: "What would you like to do?",
+      name: "continueOption",
+      choices: [
+        "Add a new engineer",
+        "Add a new intern",
+        "Finished building team",
+      ],
+    },
+  ];
+
   const managerInfo = await inquirer.prompt(managerQuestions);
+
+  let continueChoice = await inquirer.prompt(continueQuestion);
+
+  while (inProgress) {
+    console.log(continueChoice);
+    if (continueChoice.continueOption == "Add a new engineer") {
+      continueChoice = await inquirer.prompt(continueQuestion);
+    } else if (continueChoice.continueOption == "Add a new intern") {
+      continueChoice = await inquirer.prompt(continueQuestion);
+    } else {
+      inProgress = false;
+    }
+  }
 
   const manager = new Manager({
     name: managerInfo.managerName,
@@ -38,8 +66,6 @@ const init = async () => {
     email: managerInfo.managerEmail,
     officeNumber: managerInfo.officeNumber,
   });
-
-  console.log(manager);
 };
 
 init();
