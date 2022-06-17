@@ -32,7 +32,14 @@ const init = async () => {
 
   const managerInfo = await inquirer.prompt(managerQuestions);
 
-  console.log(managerInfo);
+  const manager = new Manager({
+    name: managerInfo.managerName,
+    id: managerInfo.managerId,
+    email: managerInfo.managerEmail,
+    officeNumber: managerInfo.officeNumber,
+  });
+
+  console.log(manager);
 };
 
 init();
