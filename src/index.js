@@ -5,6 +5,8 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const generator = require("./utils/generator");
+const fs = require("fs");
+const path = require("path");
 
 // declare global variables
 const engineers = [];
@@ -38,7 +40,11 @@ const init = async () => {
       inProgress = false;
     }
   }
-  generator.generateHTML(engineers, interns);
+  const html = generator.generateHTML(engineers, interns);
+
+  fs.writeFileSync(path.join(__dirname, "../dist", "./teamProfile.html"), html);
+
+  console.log("Successfully Generated HTML");
 };
 
 const setManager = (managerInfo) => {

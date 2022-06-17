@@ -1,25 +1,4 @@
-const generateManagerCard = (engineers) => {};
-
-const generateEngineerCard = (engineers) => {};
-
-const generateInternCard = (interns) => {
-  return interns
-    .map((intern) => {
-      return `            <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Intern</h5>
-        <p class="card-text"><strong>Name: </strong>${intern.name}</p>
-        <p class="card-text"><strong>ID: </strong>${intern.id}</p>
-        <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:bob@email.com">${intern.email}</a></p>
-        <p class="card-text"><strong>School: </strong>${intern.school}</p>
-      </div>
-    </div>`;
-    })
-    .join("");
-};
-
-const generateHTML = (engineers, interns) => {
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -77,7 +56,31 @@ const generateHTML = (engineers, interns) => {
                 </h2>
                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body">
-                    ${generateInternCard(interns)}
+                                <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Intern</h5>
+        <p class="card-text"><strong>Name: </strong>Inten 1</p>
+        <p class="card-text"><strong>ID: </strong>214324</p>
+        <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:bob@email.com">test@test.com</a></p>
+        <p class="card-text"><strong>School: </strong>testing</p>
+      </div>
+    </div>            <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Intern</h5>
+        <p class="card-text"><strong>Name: </strong>intern 2</p>
+        <p class="card-text"><strong>ID: </strong>370819264</p>
+        <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:bob@email.com">info@intern.com</a></p>
+        <p class="card-text"><strong>School: </strong>another school</p>
+      </div>
+    </div>            <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Intern</h5>
+        <p class="card-text"><strong>Name: </strong>test 3</p>
+        <p class="card-text"><strong>ID: </strong>999</p>
+        <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:bob@email.com">internagain@gmail.com</a></p>
+        <p class="card-text"><strong>School: </strong>schooling</p>
+      </div>
+    </div>
                   </div>
                 </div>
               </div>
@@ -126,7 +129,4 @@ const generateHTML = (engineers, interns) => {
           crossorigin="anonymous">
       </script>
   </body>
-  </html>`;
-};
-
-module.exports = { generateHTML };
+  </html>
