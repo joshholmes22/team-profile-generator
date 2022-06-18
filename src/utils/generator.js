@@ -1,3 +1,4 @@
+// generate cards for user inputs
 const generateManagerCard = (manager) => {
   return `          <div class="card">
     <div class="card-body">
@@ -42,6 +43,7 @@ const generateInternCard = (interns) => {
     .join("");
 };
 
+// generate HTML file
 const generateHTML = (engineers, interns) => {
   const manager = engineers[0];
   return `<!DOCTYPE html>

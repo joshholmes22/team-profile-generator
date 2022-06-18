@@ -23,6 +23,7 @@ const init = async () => {
 
   let continueChoice = await inquirer.prompt(questions.getContinueQuestion());
 
+  // loop questions until full team has been created
   while (inProgress) {
     if (continueChoice.continueOption == "Add a new engineer") {
       const engineerAnswers = await inquirer.prompt(
@@ -47,6 +48,7 @@ const init = async () => {
   console.log("Successfully Generated HTML");
 };
 
+// create manager
 const setManager = (managerInfo) => {
   const manager = new Manager({
     name: managerInfo.managerName,
@@ -59,6 +61,7 @@ const setManager = (managerInfo) => {
   engineers.push(manager);
 };
 
+// create new engineer
 const addEngineer = (engineerAnswers) => {
   const engineer = new Engineer({
     name: engineerAnswers.name,
@@ -69,6 +72,7 @@ const addEngineer = (engineerAnswers) => {
   engineers.push(engineer);
 };
 
+// create new intern
 const addIntern = (internAnswers) => {
   const intern = new Intern({
     name: internAnswers.name,
