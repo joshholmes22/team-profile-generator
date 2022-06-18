@@ -18,7 +18,7 @@ const generateEngineerCard = (engineers) => {
         <h5 class="card-title">Engineer</h5>
         <p class="card-text"><strong>Name: </strong>${engineer.getName()}</p>
         <p class="card-text"><strong>ID: </strong>${engineer.getId()}</p>
-        <p class="card-text"><strong>Email: </strong><a class="link" href="mailtoe:${engineer.getEmail()}">${engineer.getEmail()}</a></p>
+        <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></p>
         <p class="card-text"><strong>Github: </strong><a class="link" href="https://www.github.com/${engineer.getLink()}" target="_blank">${engineer.getLink()}</a></p>
       </div>
     </div>`;
@@ -34,7 +34,7 @@ const generateInternCard = (interns) => {
         <h5 class="card-title">Intern</h5>
         <p class="card-text"><strong>Name: </strong>${intern.getName()}</p>
         <p class="card-text"><strong>ID: </strong>${intern.getId()}</p>
-        <p class="card-text"><strong>Email: </strong><a class="link" href="${intern.getEmail()}">${intern.getEmail()}</a></p>
+        <p class="card-text"><strong>Email: </strong><a class="link" href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></p>
         <p class="card-text"><strong>School: </strong>${intern.getSchool()}</p>
       </div>
     </div>`;

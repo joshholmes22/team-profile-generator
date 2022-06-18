@@ -4,10 +4,12 @@ An application that creates a team profile. Displaying layers of a software comp
 
 ## Demonstration Video
 
+Please click [here](https://youtu.be/R_AptZRGZ_U) to view the walkthrough video for the project
+
 ## Installation
 
 ```
-git clone
+git clone git@github.com:glowingmanagement/team-profile-generator.git
 cd team-profile-generator
 npm install
 ```
@@ -25,3 +27,5 @@ npm run tests
 ```
 
 ## Screenshots
+
+![Viewport](./src/media/images/FrontEnd%20Team%20Members.png)
